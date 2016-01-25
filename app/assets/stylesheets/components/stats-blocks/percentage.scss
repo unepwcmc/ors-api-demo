@@ -3,7 +3,7 @@
 $spacing: 20px;
 
 .stats-block-percentage {
-  border-bottom: solid 1px $dark-grey;
+  border-bottom: solid 1px $darker-grey;
   padding: $spacing 0;
   margin: $spacing 0;
 
@@ -20,11 +20,11 @@ $spacing: 20px;
   }
 
   .stats-block-percentage__text {
-    font-family: 'Hind', sans-serif;
-    font-weight: 300;
-    font-size: 24px;
+    font: normal 300 24px/1.2em 'Hind', sans-serif;
+    color: $dark-grey;
 
     .stats-block-percentage__text--blue {
+      font-weight: 600;
       color: $blue;
     }
   }
