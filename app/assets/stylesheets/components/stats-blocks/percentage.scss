@@ -1,0 +1,31 @@
+@import 'utilities/colors';
+
+$spacing: 20px;
+
+.stats-block-percentage {
+  border-bottom: solid 1px $dark-grey;
+  padding: $spacing 0;
+  margin: $spacing 0;
+
+  .stats-block-percentage__figure, .stats-block-percentage__text {
+    display: inline-block;
+  }
+
+  .stats-block-percentage__figure {
+    font: normal 600 72px/72px 'Hind', sans-serif;
+    color: $blue;
+    border-right: solid 1px $light-grey;
+    padding-right: $spacing;
+    margin-right: $spacing;
+  }
+
+  .stats-block-percentage__text {
+    font-family: 'Hind', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+
+    .stats-block-percentage__text--blue {
+      color: $blue;
+    }
+  }
+}
