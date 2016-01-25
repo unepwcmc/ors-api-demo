@@ -9,12 +9,16 @@ h1, h2, .subheading {
   text-transform: uppercase;
 }
 
-h1 { font: normal 600 59px/160px 'Hind', sans-serif; }
-h2 { font: normal 600 37px/100px 'Hind', sans-serif; }
+h1 { font: normal 600 59px/1em 'Hind', sans-serif; }
+h2 { font: normal 600 37px/1em 'Hind', sans-serif; }
 h3 { font: normal 600 23px/1.1em 'Hind', sans-serif; }
 h4 { font: normal 300 21px/1.1em 'Hind', sans-serif; }
 p { font: normal 300 14px/1.1em 'Open Sans', sans-serif; }
 p.strong { font: normal 300 18px/1.1em 'Hind', sans-serif; }
+
+.heading {
+  line-height: 2em;
+}
 
 .subheading {
   font: normal 300 28px/1.5em 'Hind', sans-serif;
