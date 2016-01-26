@@ -3,7 +3,11 @@
 <head>
   <title>AWEA NAtional Reports 2012-2014</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script type="text/javascript">
+    google.load('visualization', '1.0', {'packages':['corechart']})
+  </script>
   <%= csrf_meta_tags %>
 </head>
 <body>

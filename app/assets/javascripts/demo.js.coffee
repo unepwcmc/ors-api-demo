@@ -4,13 +4,15 @@ window.Demo = class Demo
     @respondents = []
 
   initCharts: ->
-    @getRespondents()
-    #@submissionChart()
-    #@habitatConservationChart()
-    #@leadShotChart()
-    @illegalTakingChart()
-    #@catchOfSeabirdsChart()
-    #@awarenessChart()
+    @getData((data) =>
+      @parseRespondents(data)
+      #@submissionChart()
+      #@habitatConservationChart()
+      #@leadShotChart()
+      @illegalTakingChart()
+      #@catchOfSeabirdsChart()
+      #@awarenessChart()
+    )
 
   ajaxRequest: (params) ->
     base_url = 'http://cms-ors-api.ort-staging.linode.unep-wcmc.org/api/v1/questionnaires/48'
@@ -21,16 +23,13 @@ window.Demo = class Demo
       data: params['data']
       type: 'GET'
       dataType: 'json'
-      async: false
       contentType: 'text/plain'
       beforeSend: (request) ->
         request.setRequestHeader("X-Authentication-Token", 'VJSsaKTayZgIkZCM4')
       error: (jqXHR, textStatus, errorThrown) ->
         console.log "AJAX Error: #{textStatus}"
       success: (data, textStatus, jqXHR) =>
-        respondents = params['callback'](data)
-
-    respondents
+        params['callback'](data)
 
   habitatConservationChart: ->
     params['question_id'] = '/questions/5113'
@@ -41,10 +40,8 @@ window.Demo = class Demo
     @ajaxRequest(params)
 
   illegalTakingChart: ->
-    params = {}
-    params['question_id'] = '/questions/5020'
-    params['callback'] = @parseYesOrNo
-    @ajaxRequest(params)
+    pie_chart = new PieChart(@respondents)
+    @ajaxRequest(pie_chart.params)
 
   catchOfSeabirdsChart: ->
     params['question_id'] = '/questions/4472'
@@ -54,9 +51,10 @@ window.Demo = class Demo
     params['question_id'] = '/questions/4808'
     @ajaxRequest(params)
 
-  getRespondents: ->
+  getData: (next) ->
     params = {}
-    params['callback'] = @parseRespondents
+    params['callback'] = next
+    params['sync'] = 'sync'
     @ajaxRequest(params)
 
   parseRespondents: (data) =>
@@ -66,17 +64,7 @@ window.Demo = class Demo
       if r.respondent.status == 'Submitted'
         respondent = @parseRespondentCountry(r.respondent.full_name)
         respondents_by_country.push respondent if respondent
-    @constructor.respondents = respondents_by_country
-
-  parseYesOrNo: (data) =>
-    res = @constructor.respondents
-    debugger
-    answers = data.question.answers
-    answers_by_country = {}
-    for a in answers
-      respondent = @parseRespondentCountry(a.answer.respondent)
-      if respondent and respondent in @constructor.respondents
-        answers_by_country[respondent] = a.answer.answer_text
+    @respondents = respondents_by_country
 
   parseRespondentCountry: (respondent) ->
     country = respondent.split(':')[1]
@@ -88,4 +76,5 @@ window.Demo = class Demo
 
 $(document).on 'ready page:load', ->
   $.support.cors = true
-  new Demo()
+  google.setOnLoadCallback =>
+    new Demo()
