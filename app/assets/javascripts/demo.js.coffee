@@ -6,12 +6,12 @@ window.Demo = class Demo
   initCharts: ->
     @getData((data) =>
       @parseRespondents(data)
-      #@submissionChart()
+      @submissionChart()
       #@habitatConservationChart()
-      @leadShotChart()
-      @illegalTakingChart()
+      #@leadShotChart()
+      #@illegalTakingChart()
       #@catchOfSeabirdsChart()
-      #@awarenessChart()
+      @awarenessChart()
     )
 
   ajaxRequest: (params) ->
@@ -31,12 +31,29 @@ window.Demo = class Demo
       success: (data, textStatus, jqXHR) =>
         params['callback'](data)
 
+  submissionChart: ->
+    data = new google.visualization.arrayToDataTable([
+      ['Region', 'Submitted', 'Not answered', 'Not required'],
+      ['Africa', 14, 18, 3],
+      ['Eurasia', 25, 14, 1]
+    ])
+
+    options = {
+      chart: {
+        title: 'A title',
+        subtitle: 'A subtitle'
+      }
+    }
+
+    chart = new google.charts.Bar(document.getElementById('submission_chart'))
+    chart.draw(data, options)
+
   habitatConservationChart: ->
     params['question_id'] = '/questions/5113'
     @ajaxRequest(params)
 
   leadShotChart: ->
-    column_chart = new ColumnChart(@respondents)
+    column_chart = new ColumnChart(@respondents, 5002)
     @ajaxRequest(column_chart.params)
 
   illegalTakingChart: ->
@@ -44,12 +61,12 @@ window.Demo = class Demo
     @ajaxRequest(pie_chart.params)
 
   catchOfSeabirdsChart: ->
-    params['question_id'] = '/questions/4472'
-    @ajaxRequest(params)
+    column_chart = new ColumnChart(@respondents, 4472)
+    @ajaxRequest(column_chart.params)
 
   awarenessChart: ->
-    params['question_id'] = '/questions/4808'
-    @ajaxRequest(params)
+    column_chart = new ColumnChart(@respondents, 4808)
+    @ajaxRequest(column_chart.params)
 
   getData: (next) ->
     params = {}
