@@ -1,8 +1,8 @@
 window.BarChart = class BarChart
-  constructor: (data)->
-    @drawChart(data)
+  constructor: (data, options)->
+    @drawChart(data, options)
 
-  drawChart: (chart_data) ->
+  drawChart: (chart_data, opts) ->
     data = new google.visualization.arrayToDataTable(chart_data)
 
     options = {
@@ -17,5 +17,6 @@ window.BarChart = class BarChart
         textPosition: 'none',
       }
     }
-    chart = new google.visualization.BarChart(document.getElementById('barchart'))
+
+    chart = new google.visualization.BarChart(document.getElementById(opts.container))
     chart.draw(data, options)

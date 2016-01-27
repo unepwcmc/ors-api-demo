@@ -1,7 +1,7 @@
 window.Chart = class Chart
-  constructor: (@respondents, question_id) ->
+  constructor: (@respondents, @question_id) ->
     @params = {
-      question_id: question_id,
+      question_id: @question_id,
       callback: @initChart
     }
 
@@ -38,14 +38,12 @@ window.Chart = class Chart
 
     @addData(answers)
 
-    if row_data
-      row_answers = @addRowData(new_keys, new_hash)
-      data = {
-        answers: answers,
-        row_answers: row_answers
-      }
-    else
-      answers
+    data = {
+      answers: answers
+    }
+    data['row_answers'] = @addRowData(new_keys, new_hash) if row_data
+    data['target'] = @addTarget(new_keys, new_hash) if @question_id == '/questions/5002'
+    data
 
   countHash: (hash, key) ->
     if hash[key]
@@ -62,3 +60,17 @@ window.Chart = class Chart
     keys.push {role: 'annotation'}
     values.push ''
     [keys, values]
+
+  addTarget: (keys, hash) ->
+    target = 0
+    total = 0
+    for key in keys
+      if hash[key]
+        if key == 'Fully' or key == 'Partially'
+          target += hash[key]
+        total += hash[key]
+
+    keys = ['', 'Progress', 'Target', {role: 'annotation'}]
+    values = ['Progress', target, total, '']
+    [keys, values]
+

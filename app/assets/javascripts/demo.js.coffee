@@ -8,10 +8,10 @@ window.Demo = class Demo
       @parseRespondents(data)
       @submissionChart()
       #@habitatConservationChart()
-      #@leadShotChart()
-      @illegalTakingChart()
+      @leadShotChart()
+      #@illegalTakingChart()
       #@catchOfSeabirdsChart()
-      @awarenessChart()
+      #@awarenessChart()
     )
 
   ajaxRequest: (params) ->
