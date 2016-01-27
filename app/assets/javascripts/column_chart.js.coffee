@@ -1,6 +1,6 @@
 window.ColumnChart = class ColumnChart extends Chart
-  constructor: (@respondents) ->
-    super(@respondents, '/questions/5002')
+  constructor: (@respondents, question_id) ->
+    super(@respondents, "/questions/#{question_id}")
 
   drawChart: (chart_data) ->
     data = new google.visualization.arrayToDataTable(chart_data['answers'])
@@ -30,26 +30,7 @@ window.ColumnChart = class ColumnChart extends Chart
     }
     chart = new google.visualization.ColumnChart(document.getElementById('column_chart_div'))
     chart.draw(data,options)
-    @drawRowChart(chart_data['row_answers']) if chart_data['row_answers']
-
-  drawRowChart: (chart_data) ->
-    data = new google.visualization.arrayToDataTable(chart_data)
-
-    options = {
-      height: 100,
-      legend: { position: 'bottom', maxLines: 2 },
-      isStacked: 'percent'
-      hAxis: {
-        minValue: 0,
-        ticks: [0, .3, .6, .9, 1]
-        gridlines: {color: '#d6d6d6', count: 1},
-        minorGridlines: {color: '#f1f1f1', count: 4},
-        textPosition: 'none',
-      }
-    }
-    chart = new google.visualization.BarChart(document.getElementById('barchart'))
-    chart.draw(data, options)
-
+    new BarChart(chart_data['row_answers']) if chart_data['row_answers']
 
   hashToArray: (hash) ->
     super(hash, true)

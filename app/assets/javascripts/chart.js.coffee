@@ -37,6 +37,7 @@ window.Chart = class Chart
       answers.push [key, new_hash[key]]
 
     @addData(answers)
+
     if row_data
       row_answers = @addRowData(new_keys, new_hash)
       data = {
