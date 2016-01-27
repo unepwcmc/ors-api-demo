@@ -9,7 +9,7 @@ window.Demo = class Demo
       @submissionChart()
       #@habitatConservationChart()
       #@leadShotChart()
-      #@illegalTakingChart()
+      @illegalTakingChart()
       #@catchOfSeabirdsChart()
       @awarenessChart()
     )

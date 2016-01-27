@@ -21,23 +21,7 @@ window.ColumnChart = class ColumnChart extends Chart
     }
     chart = new google.visualization.ColumnChart(document.getElementById('column_chart_div'))
     chart.draw(data,options)
-    @drawRowChart(chart_data['row_answers']) if chart_data['row_answers']
-
-  drawRowChart: (chart_data) ->
-    data = new google.visualization.arrayToDataTable(chart_data)
-
-    options = {
-      height: 400,
-      legend: { position: 'top', maxLines: 1 },
-      isStacked: 'percent'
-      hAxis: {
-        minValue: 0,
-        ticks: [0, .3, .6, .9, 1]
-      }
-    }
-    chart = new google.visualization.BarChart(document.getElementById('barchart'))
-    chart.draw(data, options)
-
+    new BarChart(chart_data['row_answers']) if chart_data['row_answers']
 
   hashToArray: (hash) ->
     super(hash, true)
