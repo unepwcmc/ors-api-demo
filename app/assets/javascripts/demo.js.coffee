@@ -8,7 +8,7 @@ window.Demo = class Demo
       @parseRespondents(data)
       #@submissionChart()
       #@habitatConservationChart()
-      #@leadShotChart()
+      @leadShotChart()
       @illegalTakingChart()
       #@catchOfSeabirdsChart()
       #@awarenessChart()
@@ -36,8 +36,8 @@ window.Demo = class Demo
     @ajaxRequest(params)
 
   leadShotChart: ->
-    params['question_id'] = '/questions/5002'
-    @ajaxRequest(params)
+    column_chart = new ColumnChart(@respondents)
+    @ajaxRequest(column_chart.params)
 
   illegalTakingChart: ->
     pie_chart = new PieChart(@respondents)

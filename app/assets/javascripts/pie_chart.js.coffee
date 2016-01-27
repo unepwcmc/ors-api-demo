@@ -23,7 +23,7 @@ window.PieChart = class PieChart
       'height':300
     }
 
-    chart = new google.visualization.PieChart(document.getElementById('chart_div'))
+    chart = new google.visualization.PieChart(document.getElementById('pie_chart_div'))
     chart.draw(data, options)
 
 
