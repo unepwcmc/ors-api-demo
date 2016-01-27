@@ -43,5 +43,9 @@ window.ColumnChart = class ColumnChart extends Chart
     super(hash, true)
 
   addData: (answers) ->
-    answers.unshift(['Element', 'Density'])
-    answers.push(['Not answered', 32])
+    colors = ['#111', '#555', '#777', '#222', '#999']
+    answers.map((answer) ->
+      answer.push colors.shift()
+    )
+    answers.unshift(['Element', 'Density', {role: 'style'}])
+    answers.push(['Not answered', 32, colors.shift()])
