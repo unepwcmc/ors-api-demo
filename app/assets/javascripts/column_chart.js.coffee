@@ -3,7 +3,7 @@ window.ColumnChart = class ColumnChart extends Chart
     super(@respondents, '/questions/5002')
 
   drawChart: (chart_data) ->
-    data = new google.visualization.arrayToDataTable(chart_data)
+    data = new google.visualization.arrayToDataTable(chart_data['answers'])
 
     options = {
       width: 900,
@@ -19,9 +19,28 @@ window.ColumnChart = class ColumnChart extends Chart
         ticks: [0, 5, 10, 15, 20, 25, 30, 35]
       }
     }
-
     chart = new google.visualization.ColumnChart(document.getElementById('column_chart_div'))
     chart.draw(data,options)
+    @drawRowChart(chart_data['row_answers']) if chart_data['row_answers']
+
+  drawRowChart: (chart_data) ->
+    data = new google.visualization.arrayToDataTable(chart_data)
+
+    options = {
+      height: 400,
+      legend: { position: 'top', maxLines: 1 },
+      isStacked: 'percent'
+      hAxis: {
+        minValue: 0,
+        ticks: [0, .3, .6, .9, 1]
+      }
+    }
+    chart = new google.visualization.BarChart(document.getElementById('barchart'))
+    chart.draw(data, options)
+
+
+  hashToArray: (hash) ->
+    super(hash, true)
 
   addData: (answers) ->
     answers.unshift(['Element', 'Density'])

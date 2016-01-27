@@ -25,7 +25,7 @@ window.Chart = class Chart
     else
       null
 
-  hashToArray: (hash) ->
+  hashToArray: (hash, row_data) ->
     keys = Object.keys(hash)
     new_hash = {}
     answers = []
@@ -37,10 +37,27 @@ window.Chart = class Chart
       answers.push [key, new_hash[key]]
 
     @addData(answers)
-    answers
+    if row_data
+      row_answers = @addRowData(new_keys, new_hash)
+      data = {
+        answers: answers,
+        row_answers: row_answers
+      }
+    else
+      answers
 
   countHash: (hash, key) ->
     if hash[key]
       hash[key]++
     else
       hash[key] = 1
+
+  addRowData: (keys, hash) ->
+    values = (value for own prop, value of hash)
+    keys.unshift ''
+    values.unshift 'Answer'
+    keys.push 'Not answered'
+    values.push 32
+    keys.push {role: 'annotation'}
+    values.push ''
+    [keys, values]
