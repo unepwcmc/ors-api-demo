@@ -6,6 +6,7 @@ window.Demo = class Demo
   initCharts: ->
     @getData((data) =>
       @parseRespondents(data)
+      new Map()
       @submissionChart()
       #@habitatConservationChart()
       @leadShotChart()

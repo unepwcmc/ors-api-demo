@@ -2,13 +2,17 @@
 <html>
 <head>
   <title>AWEA NAtional Reports 2012-2014</title>
+  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script type="text/javascript">
     google.load('visualization', '1.0', {'packages':['corechart', 'bar']})
   </script>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
