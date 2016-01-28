@@ -20,6 +20,8 @@ window.ColumnChart = class ColumnChart extends Chart
       },
       hAxis: {
         textPosition: 'none',
+        gridlines: {color: '#d6d6d6', count: 1},
+        minorGridlines: {color: '#f1f1f1', count: 4}
       },
       annotations: {
         alwaysOutside: true,
@@ -47,12 +49,45 @@ window.ColumnChart = class ColumnChart extends Chart
 
   addRowChart: (chart_data) ->
     options = {
-      container: 'barchart'
+      container: 'barchart',
+      chart_options: {
+        height: 100,
+        legend: { position: 'bottom', maxLines: 2 },
+        isStacked: 'percent'
+        colors: ['#2c53a7', '#6d88c4', '#e17d2e', '#30a9bb', '#858585']
+        hAxis: {
+          minValue: 0,
+          ticks: [0, .3, .6, .9, 1]
+          gridlines: {color: '#d6d6d6', count: 1},
+          minorGridlines: {color: '#f1f1f1', count: 4},
+          textPosition: 'none',
+        },
+        vAxis: {
+          textPosition: 'none'
+        }
+      }
     }
     new BarChart(chart_data, options)
 
   addTargetChart: (chart_data) ->
     options = {
       container: 'target_chart'
+      chart_options: {
+        height: 100,
+        legend: { position: 'none' },
+        isStacked: 'percent'
+        colors: ['#25437B', '#d6d6d6']
+        hAxis: {
+          minValue: 0,
+          ticks: [0, .2, .4, .6, .8, 1]
+          gridlines: {color: '#d6d6d6', count: 1},
+          minorGridlines: {color: '#f1f1f1', count: 4},
+          #textPosition: 'none',
+        },
+        vAxis: {
+          textPosition: 'none'
+        }
+      }
     }
+
     new BarChart(chart_data, options)

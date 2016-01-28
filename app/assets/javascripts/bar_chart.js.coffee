@@ -2,25 +2,9 @@ window.BarChart = class BarChart
   constructor: (data, options)->
     @drawChart(data, options)
 
-  drawChart: (chart_data, opts) ->
+  drawChart: (chart_data, options) ->
     data = new google.visualization.arrayToDataTable(chart_data)
 
-    options = {
-      height: 100,
-      legend: { position: 'bottom', maxLines: 2 },
-      isStacked: 'percent'
-      colors: ['#2c53a7', '#6d88c4', '#e17d2e', '#30a9bb', '#858585']
-      hAxis: {
-        minValue: 0,
-        ticks: [0, .3, .6, .9, 1]
-        gridlines: {color: '#d6d6d6', count: 1},
-        minorGridlines: {color: '#f1f1f1', count: 4},
-        textPosition: 'none',
-      },
-      vAxis: {
-        textPosition: 'none'
-      }
-    }
 
-    chart = new google.visualization.BarChart(document.getElementById(opts.container))
-    chart.draw(data, options)
+    chart = new google.visualization.BarChart(document.getElementById(options.container))
+    chart.draw(data, options.chart_options)

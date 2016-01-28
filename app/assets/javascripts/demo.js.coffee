@@ -39,11 +39,30 @@ window.Demo = class Demo
     ])
 
     options = {
-      chart: {
-        title: 'A title',
-        subtitle: 'A subtitle'
-      }
+      legend: {position: 'none'},
+      height: 500,
+      colors: ['#2c53a7', '#e17d2e', '#858585'],
+      vAxis: {
+        viewWindow: {
+          min: 0,
+          max: 35
+        },
+        ticks: [0, 5, 10, 15, 20, 25, 30, 35],
+        gridlines: {color: '#d6d6d6', count: 1},
+        minorGridlines: {color: '#f1f1f1', count: 4}
+      },
+      hAxis: {
+        gridlines: {color: '#d6d6d6', count: 1},
+        minorGridlines: {color: '#f1f1f1', count: 4}
+      },
+      annotations: {
+        alwaysOutside: true,
+        textStyle: {
+          fontSize: 14
+        },
+      },
     }
+
 
     chart = new google.charts.Bar(document.getElementById('submission_chart'))
     chart.draw(data, options)

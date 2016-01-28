@@ -57,8 +57,6 @@ window.Chart = class Chart
     values.unshift 'Answer'
     keys.push 'Not answered'
     values.push 32
-    keys.push {role: 'annotation'}
-    values.push ''
     [keys, values]
 
   addTarget: (keys, hash) ->
