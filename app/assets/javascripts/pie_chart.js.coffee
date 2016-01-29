@@ -1,6 +1,6 @@
 window.PieChart = class PieChart extends Chart
-  constructor: (@respondents) ->
-    super(@respondents, '/questions/5020')
+  constructor: (@respondents, @question_id) ->
+    super(@respondents, @question_id)
 
   drawChart: (chart_data) ->
     data = new google.visualization.DataTable()

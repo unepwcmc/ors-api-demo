@@ -1,9 +1,10 @@
 window.Chart = class Chart
   constructor: (@respondents, @question_id) ->
     @params = {
-      question_id: @question_id,
+      question_id: "/questions/#{@question_id}",
       callback: @initChart
     }
+    DemoUtils.ajaxRequest(@params)
 
   initChart: (data) =>
     chart_data = @parseData(data)
@@ -13,17 +14,10 @@ window.Chart = class Chart
     answers = data.question.answers
     answers_by_country = {}
     for a in answers
-      respondent = @parseRespondentCountry(a.answer.respondent)
+      respondent = DemoUtils.parseRespondentCountry(a.answer.respondent)
       if respondent and respondent in @respondents
         answers_by_country[respondent] = a.answer.answer_text
     @hashToArray(answers_by_country)
-
-  parseRespondentCountry: (respondent) ->
-    country = respondent.split(':')[1]
-    if country
-      country.trim()
-    else
-      null
 
   hashToArray: (hash, row_data) ->
     keys = Object.keys(hash)
