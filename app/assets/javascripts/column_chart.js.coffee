@@ -67,7 +67,7 @@ window.ColumnChart = class ColumnChart extends Chart
         }
       }
     }
-    new BarChart(chart_data, options)
+    new RowChart(chart_data, options)
 
   addTargetChart: (chart_data) ->
     options = {
@@ -90,4 +90,4 @@ window.ColumnChart = class ColumnChart extends Chart
       }
     }
 
-    new BarChart(chart_data, options)
+    new RowChart(chart_data, options)
