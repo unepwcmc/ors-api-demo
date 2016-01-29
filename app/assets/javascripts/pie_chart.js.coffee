@@ -6,7 +6,7 @@ window.PieChart = class PieChart extends Chart
     data = new google.visualization.DataTable()
     data.addColumn('string', 'Answers')
     data.addColumn('number', 'Counts')
-    data.addRows(chart_data)
+    data.addRows(chart_data['answers'])
 
     options = {
       'title':'A title',
