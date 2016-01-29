@@ -1,10 +1,10 @@
 window.DemoUtils = class DemoUtils
+  @base_url = 'http://cms-ors-api.ort-staging.linode.unep-wcmc.org/api/v1/questionnaires/48'
+
   @ajaxRequest: (params) ->
-    base_url = 'http://cms-ors-api.ort-staging.linode.unep-wcmc.org/api/v1/questionnaires/48'
-    respondents = []
 
     $.ajax
-      url: base_url + params['question_id']
+      url: @base_url + params['question_id']
       data: params['data']
       type: 'GET'
       dataType: 'json'
