@@ -9,9 +9,8 @@ window.PieChart = class PieChart extends Chart
     data.addRows(chart_data['answers'])
 
     options = {
-      'title':'A title',
-      'width':400,
-      'height':300
+      colors: ['#2c53a7', '#e17d2e', '#30a9bb'],
+      height: 500
     }
 
     chart = new google.visualization.PieChart(document.getElementById(@container))

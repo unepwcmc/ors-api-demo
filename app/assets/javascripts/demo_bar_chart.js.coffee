@@ -24,11 +24,18 @@ window.DemoBarChart = class DemoBarChart extends Chart
   drawPartial: (partial_data, container) ->
     data = new google.visualization.arrayToDataTable(partial_data)
     options = {
-        title: "Density of Precious Metals",
-        width: 600,
-        height: 400,
+        height: 100,
         bar: {groupWidth: "95%"},
-        legend: { position: "none" },
+        legend: { position: "bottom" },
+        colors: ['#b08c58', '#6d88c4', '#2c53a7'],
+        hAxis: {
+          #minValue: 0,
+          #ticks: [0, .3, .6, .9, 1]
+          gridlines: {color: '#d6d6d6', count: 1},
+          minorGridlines: {color: '#f1f1f1', count: 4},
+          textPosition: 'none',
+        },
+        vAxis: { textPosition: 'none' }
     }
 
     chart = new google.visualization.BarChart(document.getElementById(container))
