@@ -1,10 +1,10 @@
 window.Chart = class Chart
   constructor: (@respondents, @question_id) ->
     @params = {
-      question_id: "/questions/#{@question_id}",
+      question_id: @question_id,
       callback: @initChart
     }
-    DemoUtils.ajaxRequest(@params)
+    DemoUtils.processRequest(@params)
 
   initChart: (data) =>
     chart_data = @parseData(data)

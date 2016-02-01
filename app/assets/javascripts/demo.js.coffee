@@ -8,7 +8,7 @@ window.Demo = class Demo
       @parseRespondents(data)
       new Map()
       @submissionChart()
-      #@habitatConservationChart()
+      @habitatConservationChart()
       #@leadShotChart()
       @illegalTakingChart()
       #@catchOfSeabirdsChart()
@@ -52,7 +52,8 @@ window.Demo = class Demo
     chart.draw(data, options)
 
   habitatConservationChart: ->
-    bar_chart = new DemoBarChart(@respondents, 5113)
+    questions_ids = [5007, 4997, 4989, 4726, 4581, 4679]
+    bar_chart = new DemoBarChart(@respondents, questions_ids)
 
   leadShotChart: ->
     column_chart = new ColumnChart(@respondents, 5002)
