@@ -9,10 +9,10 @@ window.Demo = class Demo
       new Map()
       @submissionChart()
       @habitatConservationChart()
-      #@leadShotChart()
+      @leadShotChart()
       @illegalTakingChart()
-      #@catchOfSeabirdsChart()
-      #@awarenessChart()
+      @catchOfSeabirdsChart()
+      @awarenessChart()
     )
 
   submissionChart: ->
@@ -53,19 +53,19 @@ window.Demo = class Demo
 
   habitatConservationChart: ->
     questions_ids = [5007, 4997, 4989, 4726, 4581, 4679]
-    bar_chart = new DemoBarChart(@respondents, questions_ids)
+    bar_chart = new DemoBarChart(@respondents, questions_ids, ['total_sites', 'nationally_important_sites', 'internationally_important_sites'])
 
   leadShotChart: ->
-    column_chart = new ColumnChart(@respondents, 5002)
+    column_chart = new ColumnChart(@respondents, 5002, 'lead_shot_chart')
 
   illegalTakingChart: ->
-    pie_chart = new PieChart(@respondents, 5020)
+    pie_chart = new PieChart(@respondents, 5020, 'illegal_taking_chart')
 
   catchOfSeabirdsChart: ->
-    column_chart = new ColumnChart(@respondents, 4472)
+    column_chart = new ColumnChart(@respondents, 4472, 'seabirds_chart')
 
   awarenessChart: ->
-    column_chart = new ColumnChart(@respondents, 4808)
+    column_chart = new ColumnChart(@respondents, 4808, 'awareness_chart')
 
   getData: (next) ->
     params = {}

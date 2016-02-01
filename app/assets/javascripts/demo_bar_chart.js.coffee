@@ -1,5 +1,5 @@
 window.DemoBarChart = class DemoBarChart extends Chart
-  constructor: (@respondents, @question_id) ->
+  constructor: (@respondents, @question_id, @containers) ->
     @data = []
     super(@respondents, @question_id)
 
@@ -16,13 +16,11 @@ window.DemoBarChart = class DemoBarChart extends Chart
 
   drawChart: (chart_data) ->
     gathered_data = @gatherData(chart_data)
-    debugger
     for key, partial_data of gathered_data
-      @drawPartial(partial_data)
+      @drawPartial(partial_data, key)
 
 
-  drawPartial: (partial_data) ->
-    debugger
+  drawPartial: (partial_data, container) ->
     data = new google.visualization.arrayToDataTable(partial_data)
     options = {
         title: "Density of Precious Metals",
@@ -32,7 +30,7 @@ window.DemoBarChart = class DemoBarChart extends Chart
         legend: { position: "none" },
     }
 
-    chart = new google.visualization.BarChart(document.getElementById('barschart'))
+    chart = new google.visualization.BarChart(document.getElementById(container))
     chart.draw(data,options)
 
   gatherData: (chart_data) ->
@@ -50,9 +48,9 @@ window.DemoBarChart = class DemoBarChart extends Chart
       total.push(number + internationally_important[index])
 
     data = {
-      total: total,
-      nationally_important: nationally_important,
-      internationall_important: internationally_important
+      total_sites: total,
+      nationally_important_sites: nationally_important,
+      internationally_important_sites: internationally_important
     }
 
     @addMetaData(data)

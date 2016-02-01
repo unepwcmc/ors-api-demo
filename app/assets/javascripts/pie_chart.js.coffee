@@ -1,5 +1,5 @@
 window.PieChart = class PieChart extends Chart
-  constructor: (@respondents, @question_id) ->
+  constructor: (@respondents, @question_id, @container) ->
     super(@respondents, "/questions/#{@question_id}")
 
   drawChart: (chart_data) ->
@@ -14,7 +14,7 @@ window.PieChart = class PieChart extends Chart
       'height':300
     }
 
-    chart = new google.visualization.PieChart(document.getElementById('pie_chart_div'))
+    chart = new google.visualization.PieChart(document.getElementById(@container))
     chart.draw(data, options)
 
   addData: (answers) ->

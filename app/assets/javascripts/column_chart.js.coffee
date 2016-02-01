@@ -1,6 +1,6 @@
 window.ColumnChart = class ColumnChart extends Chart
-  constructor: (@respondents, @question_id) ->
-    super(@respondents, @question_id)
+  constructor: (@respondents, @question_id, @container) ->
+    super(@respondents, "/questions/#{@question_id}")
 
   drawChart: (chart_data) ->
     data = new google.visualization.arrayToDataTable(chart_data['answers'])
@@ -30,7 +30,7 @@ window.ColumnChart = class ColumnChart extends Chart
         },
       },
     }
-    chart = new google.visualization.ColumnChart(document.getElementById('column_chart_div'))
+    chart = new google.visualization.ColumnChart(document.getElementById(@container))
     chart.draw(data,options)
     @addRowChart(chart_data['row_answers']) if chart_data['row_answers']
     @addTargetChart(chart_data['target']) if chart_data['target']
@@ -49,7 +49,7 @@ window.ColumnChart = class ColumnChart extends Chart
 
   addRowChart: (chart_data) ->
     options = {
-      container: 'barchart',
+      container: 'row_chart',
       chart_options: {
         height: 100,
         legend: { position: 'bottom', maxLines: 2 },
