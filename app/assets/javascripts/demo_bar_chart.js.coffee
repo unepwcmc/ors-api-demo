@@ -1,7 +1,7 @@
 window.DemoBarChart = class DemoBarChart extends Chart
   constructor: (@respondents, @question_id, @containers) ->
     @data = []
-    super(@respondents, @question_id)
+    super(@respondents, @question_id, @containers[0])
 
   initChart: (data) ->
     @data.push(@parseData(data))
@@ -12,6 +12,7 @@ window.DemoBarChart = class DemoBarChart extends Chart
       }
       DemoUtils.ajaxRequest(params)
     else
+      $("##{@container}").removeClass("loading")
       @drawChart(@data)
 
   drawChart: (chart_data) ->

@@ -1,6 +1,6 @@
 window.ColumnChart = class ColumnChart extends Chart
   constructor: (@respondents, @question_id, @container) ->
-    super(@respondents, "/questions/#{@question_id}")
+    super(@respondents, "/questions/#{@question_id}", @container)
 
   drawChart: (chart_data) ->
     data = new google.visualization.arrayToDataTable(chart_data['answers'])

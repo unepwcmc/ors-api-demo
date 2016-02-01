@@ -1,5 +1,5 @@
 window.Chart = class Chart
-  constructor: (@respondents, @question_id) ->
+  constructor: (@respondents, @question_id, @container) ->
     @params = {
       question_id: @question_id,
       callback: @initChart
@@ -8,6 +8,7 @@ window.Chart = class Chart
 
   initChart: (data) =>
     chart_data = @parseData(data)
+    $("##{@container}").removeClass("loading")
     @drawChart(chart_data)
 
   parseData: (data) ->
