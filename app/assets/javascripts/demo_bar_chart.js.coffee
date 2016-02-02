@@ -18,26 +18,50 @@ window.DemoBarChart = class DemoBarChart extends Chart
   drawChart: (chart_data) ->
     gathered_data = @gatherData(chart_data)
     for key, partial_data of gathered_data
-      @drawPartial(partial_data, key)
-
-
-  drawPartial: (partial_data, container) ->
-    data = new google.visualization.arrayToDataTable(partial_data)
-    options = {
-        height: 100,
-        bar: {groupWidth: "95%"},
-        legend: { position: "bottom" },
-        colors: ['#b08c58', '#6d88c4', '#2c53a7'],
-        hAxis: {
-          #minValue: 0,
-          #ticks: [0, .3, .6, .9, 1]
-          gridlines: {color: '#d6d6d6', count: 1},
-          minorGridlines: {color: '#f1f1f1', count: 4},
-          textPosition: 'none',
+      options = {
+        total_sites: {
+          title: "Total for both nationally and internationally important sites",
+          height: 100,
+          colors: ['#b08c58', '#6d88c4', '#2c53a7'],
+          legend: { position: 'bottom' },
+          hAxis: {
+            gridlines: { color: '#d6d6d6' },
+            minorGridlines: { color: '#f1f1f1' },
+            textPosition: 'none'
+          },
+          vAxis: { textPosition: 'none' }
         },
-        vAxis: { textPosition: 'none' }
-    }
+        nationally_important_sites: {
+          title: "Nationally important sites",
+          height: 100,
+          colors: ['#b08c58', '#6d88c4', '#2c53a7'],
+          legend: { position: 'bottom' },
+          hAxis: {
+            gridlines: { color: '#d6d6d6' },
+            minorGridlines: { color: '#f1f1f1' },
+            textPosition: 'none'
+          },
+          vAxis: { textPosition: 'none' }
+          legend: { position: 'bottom' },
+        },
+        internationally_important_sites: {
+          title: "Internationally important sites",
+          height: 100,
+          colors: ['#b08c58', '#6d88c4', '#2c53a7'],
+          legend: { position: 'bottom' },
+          hAxis: {
+            gridlines: { color: '#d6d6d6' },
+            minorGridlines: { color: '#f1f1f1' },
+            textPosition: 'none'
+          },
+          vAxis: { textPosition: 'none' }
+        }
+      }
+      @drawPartial(partial_data, key, options[key])
 
+
+  drawPartial: (partial_data, container, options) ->
+    data = new google.visualization.arrayToDataTable(partial_data)
     chart = new google.visualization.BarChart(document.getElementById(container))
     chart.draw(data,options)
 
@@ -58,7 +82,7 @@ window.DemoBarChart = class DemoBarChart extends Chart
     data = {
       total_sites: total,
       nationally_important_sites: nationally_important,
-      internationally_important_sites: internationally_important
+      internationally_important_sites: internationally_important,
     }
 
     @addMetaData(data)
