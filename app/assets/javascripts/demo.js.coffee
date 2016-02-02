@@ -16,10 +16,21 @@ window.Demo = class Demo
     )
 
   submissionChart: ->
+    countries = DemoUtils.countries
+    submitted_africa = countries.submitted_africa.length
+    submitted_eurasia = countries.submitted_eurasia.length
+    not_answered_africa = countries.not_answered_africa.length
+    not_answered_eurasia = countries.not_answered_eurasia.length
+    not_required_africa = countries.not_required_africa.length
+    not_required_eurasia = countries.not_required_eurasia.length
+
+    stats_africa = ['Africa', submitted_africa, not_answered_africa, not_required_africa]
+    stats_eurasia = ['Eurasia', submitted_eurasia, not_answered_eurasia, not_required_eurasia]
+
     data = new google.visualization.arrayToDataTable([
       ['Region', 'Submitted', 'Not answered', 'Not required'],
-      ['Africa', 14, 18, 3],
-      ['Eurasia', 25, 14, 1]
+      stats_africa,
+      stats_eurasia
     ])
 
     options = {
