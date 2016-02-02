@@ -6,6 +6,7 @@ window.Demo = class Demo
   initCharts: ->
     @getData((data) =>
       @parseRespondents(data)
+      @submissionStats()
       new Map()
       @submissionChart()
       @habitatConservationChart()
@@ -14,6 +15,17 @@ window.Demo = class Demo
       @catchOfSeabirdsChart()
       @awarenessChart()
     )
+
+  submissionStats: ->
+    num_countries = 0
+    for key, value of DemoUtils.countries
+      if key.indexOf('not_required') < 0
+        num_countries += value.length
+
+    num_respondents = @respondents.length
+    percentage = Math.round((num_respondents / num_countries) * 100)
+    $('.percentage-submitted').html("#{percentage}%")
+    $('.num-submitted').html("#{num_respondents}/#{num_countries}")
 
   submissionChart: ->
     countries = DemoUtils.countries
