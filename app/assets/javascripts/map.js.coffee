@@ -17,9 +17,12 @@ window.Map = class Map
   addLayer: (map) ->
     countries = @getCountries()
     countries_css = @generateCartocss(countries)
-    countries_list = ""
+    countries_array = []
+
     for key, value of countries
-      countries_list += "'#{value.join("','")}'"
+      countries_array.push("'#{value.join("','")}'")
+
+    countries_list = countries_array.join(',')
 
     cartodb.createLayer(map, {
       user_name: 'carbon-tool',
@@ -51,20 +54,29 @@ window.Map = class Map
 
       not_answered_eurasia: ['Finland', 'Macedonia', 'Georgia', 'Iceland', 'Ireland',
                              'Israel', 'Jordan', 'Lebanon', 'Lithuania', 'Monaco', 'Portugal',
-                             'Romania', 'Spain', 'Uzbekistan']
+                             'Romania', 'Spain', 'Uzbekistan'],
+
+      not_required_africa: ['Burundi', 'Mauritania', 'Rwanda'],
+
+      not_required_eurasia: ['The European Union']
+
     }
 
   generateCartocss: (countries) ->
     submitted_css = ''
     not_answered_css = ''
+    not_required_css = ''
     for key, value of countries
       for country, index in value
         if key.indexOf('submitted') > -1
           submitted_css += "[admin='#{country}'],"
-        else
+        else if key.indexOf('not_answered') > -1
           not_answered_css += "[admin='#{country}'],"
+        else
+          not_required_css += "[admin='#{country}'],"
 
     submitted_css += "{ polygon-fill: #2C53a7; }"
     not_answered_css += "{ polygon-fill: #E17D2E; } "
-    countries_css = submitted_css + not_answered_css
+    not_required_css += "{ polygon-fill: #858585; }"
+    countries_css = submitted_css + not_answered_css + not_required_css
 
