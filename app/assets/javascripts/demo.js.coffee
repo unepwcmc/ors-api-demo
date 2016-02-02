@@ -6,6 +6,7 @@ window.Demo = class Demo
   initCharts: ->
     @getData((data) =>
       @parseRespondents(data)
+      @submissionStats()
       new Map()
       @submissionChart()
       @habitatConservationChart()
@@ -15,11 +16,33 @@ window.Demo = class Demo
       @awarenessChart()
     )
 
+  submissionStats: ->
+    num_countries = 0
+    for key, value of DemoUtils.countries
+      if key.indexOf('not_required') < 0
+        num_countries += value.length
+
+    num_respondents = @respondents.length
+    percentage = Math.round((num_respondents / num_countries) * 100)
+    $('.percentage-submitted').html("#{percentage}%")
+    $('.num-submitted').html("#{num_respondents}/#{num_countries}")
+
   submissionChart: ->
+    countries = DemoUtils.countries
+    submitted_africa = countries.submitted_africa.length
+    submitted_eurasia = countries.submitted_eurasia.length
+    not_answered_africa = countries.not_answered_africa.length
+    not_answered_eurasia = countries.not_answered_eurasia.length
+    not_required_africa = countries.not_required_africa.length
+    not_required_eurasia = countries.not_required_eurasia.length
+
+    stats_africa = ['Africa', submitted_africa, not_answered_africa, not_required_africa]
+    stats_eurasia = ['Eurasia', submitted_eurasia, not_answered_eurasia, not_required_eurasia]
+
     data = new google.visualization.arrayToDataTable([
       ['Region', 'Submitted', 'Not answered', 'Not required'],
-      ['Africa', 14, 18, 3],
-      ['Eurasia', 25, 14, 1]
+      stats_africa,
+      stats_eurasia
     ])
 
     options = {
