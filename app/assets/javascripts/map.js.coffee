@@ -3,9 +3,13 @@ window.Map = class Map
     @initMap()
 
   initMap: ->
-    map = new L.Map('map', {
+    north_east = L.latLng(84.47, 92.46)
+    south_west = L.latLng(-47.63, -45.52)
+    bounds = L.latLngBounds(south_west, north_east)
+    window.map = map = new L.Map('map', {
       zoomControl: false,
       center: [30, 20],
+      maxBounds: bounds,
       zoom: 3
     })
 
