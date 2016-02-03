@@ -1,4 +1,11 @@
 #map {
   width: 500px;
   height: 800px;
+  .map-tooltip {
+    background: #f1f1f1;
+    text-align: center;
+    border-radius: 25px;
+    padding: 5px;
+    h3 { color: black; }
+  }
 }

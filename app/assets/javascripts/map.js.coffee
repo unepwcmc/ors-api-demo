@@ -27,10 +27,22 @@ window.Map = class Map
       type: 'cartodb',
       sublayers: [{
         sql: "SELECT * FROM ne_countries WHERE admin IN (#{countries_list})",
-        cartocss: countries_css
+        cartocss: countries_css,
+        interactivity: ['cartodb_id', 'admin']
       }]
     })
     .addTo(map)
+    .done( (layer) ->
+      info = layer.leafletMap.viz.addOverlay({
+        type: 'tooltip',
+        layer: layer.getSubLayer(0),
+        template: '<div class="map-tooltip"><h3>{{admin}}</h3></div>',
+        width: 200,
+        position: 'bottom|right',
+        fields: [{admin: 'admin'}]
+      })
+      $('#map').append(info.render().el)
+    )
 
   parseCountries: ->
     countries_array = []
