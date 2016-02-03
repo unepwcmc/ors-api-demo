@@ -90,7 +90,7 @@
       <div class="side-panel">
         <p><%= fa_icon 'info-circle' %> By 2017, AEWA countries should phase out the use of lead ammunition in both wetlands and terrestrial environments (Target 2.1 of the AEWA Strategic Plan 2009-2017).</p>
       </div>
-    <div id='row_chart'></div>
+    <div id='lead_shot_chart_row'></div>
     <div class="panel">
       <p class="strong"><span class="text-red">TARGET: </span>The use of lead shot for hunting in wetlands is phased out in all CPs</p>
       <div id='target_chart'> </div>
@@ -107,6 +107,7 @@
       <%= render partial: "spinner" %>
     </div>
     <div class="side-panel"><p><%= fa_icon 'exclamation-triangle' %> Longline and trawl fisheries have significant and widespread impacts on many seabird species, often with lethal effects.<p></div>
+    <div id="seabirds_chart_row"></div>
   </div>
 </section>
 
@@ -132,6 +133,7 @@
     <div id="awareness_chart" class="loading">
       <%= render partial: "spinner" %>
     </div>
+    <div id="awareness_chart_row"></div>
   </div>
 </section>
 
