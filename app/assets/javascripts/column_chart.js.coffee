@@ -44,12 +44,12 @@ window.ColumnChart = class ColumnChart extends Chart
       answer.push colors.shift()
       answer.push answer[1]
     )
-    answers.unshift(['Element', 'Density', {role: 'style'}, {role: 'annotation'}])
+    answers.unshift(['Element', 'Answers', {role: 'style'}, {role: 'annotation'}])
     answers.push(['Not answered', 32, colors.shift(), 32])
 
   addRowChart: (chart_data) ->
     options = {
-      container: 'row_chart',
+      container: "#{@container}_row",
       chart_options: {
         height: 100,
         legend: { position: 'bottom', maxLines: 2 },
