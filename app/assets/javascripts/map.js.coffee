@@ -36,7 +36,7 @@ window.Map = class Map
       info = layer.leafletMap.viz.addOverlay({
         type: 'tooltip',
         layer: layer.getSubLayer(0),
-        template: '<div class="map-tooltip"><h3>{{admin}}</h3></div>',
+        template: '<div class="country-tooltip"><h4>{{admin}}</h4></div>',
         width: 200,
         position: 'bottom|right',
         fields: [{admin: 'admin'}]
