@@ -6,3 +6,12 @@
   margin: 70px 0;
   text-align: center;
 }
+
+.side-panel {
+  background: $light-grey;
+  border-radius: 2px;
+  width: 500px;
+  padding: 10px 30px;
+  position: relative;
+  margin: 10px auto;
+}
