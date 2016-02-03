@@ -1,4 +1,14 @@
 <section>
+  <div class="row">
+    <div class="col col-6">
+      <p class="strong">The Agreement on the Conservation of African-Eurasian Migratory Waterbirds (AEWA) is an intergovernmental treaty dedicated to the conservation of migratory waterbirds and their habitats across Africa, Europe, the Middle East, Central Asia, Greenland and the Canadian Archipelago.
+      <p class="strong">AEWA covers 255 species of birds which are ecologically dependent on wetlands for at least part of their annual cycle.</p>
+    </div>
+    <div class="col col-6">
+      <p class="strong">The visualisations below provide summaries of a few key elements of AEWA implementation, highlighting the progress towards the AEWA Strategic Plan 2009-2017 targets and identifying priority areas where more effort and focus is needed.</p>
+      <p class="strong">This data has provided by AEWA Contracting Parties in their national reports to the Agreement for the period 2012-2014 and has been pulled dynamically from the Online Reporting System.</p>
+    </div>
+  </div>
   <h2 class="heading center">Reporting Parties</h2>
   <div class="row group">
     <div class="col col-6">
@@ -34,14 +44,15 @@
   <h2 class="heading center">Habitat Conservation</h2>
 
   <div class="row group">
-    <%= image_tag 'Habitat_Conservation.jpg' %>
+    <%= image_tag 'Habitat.jpg' %>
   </div>
   <div class="row group">
     <div class="col col-6">
-      <p class="strong">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget risus eleifend, pharetra velit eleifend, volutpat magna. Nulla quis eros sed urna malesuada cursus. Morbi tempor, augue eget euismod venenatis, odio orci suscipit nisl, vel malesuada lectus nibh eu nulla. Phasellus condimentum enim tellus, nec tincidunt purus cursus vitae. Phasellus lacinia, eros vel fringilla pharetra, ligula est efficitur purus, quis fringilla ante urna in lacus. Maecenas tristique ante sit amet ante porta, sed aliquet ex sodales.</p>
+      <p class="strong">The migration of AEWA species across borders requires international cooperation throughout their entire migratory range in order to conserve and manage the populations and the habitat on which they depend.</p>
     </div>
     <div class="col col-6">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget risus eleifend, pharetra velit eleifend, volutpat magna. Nulla quis eros sed urna malesuada cursus. Morbi tempor, augue eget euismod venenatis, odio orci suscipit nisl, vel malesuada lectus nibh eu nulla. Phasellus condimentum enim tellus, nec tincidunt purus cursus vitae. Phasellus lacinia, eros vel fringilla pharetra, ligula est efficitur purus, quis fringilla ante urna in lacus. Maecenas tristique ante sit amet ante porta, sed aliquet ex sodales. Etiam velit ipsum, condimentum eu purus quis, dapibus varius purus. Etiam vel efficitur ipsum. Maecenas vulputate, lectus eget fringilla interdum, mauris nunc scelerisque justo, at sollicitudin enim nisl sed purus. Mauris tristique dui id nisi maximus, a consectetur ipsum ultricies. Nullam condimentum sollicitudin nibh, id ultricies urna pretium ac. Vivamus sed est ut urna finibus sagittis et et justo.<p>
+      <p>Parties reported on the designation of protected sites of both national and international importance, indicating whether management plans were being implemented.</p>
+      <p>With a target of at least 50% of Parties establishing national coordination mechanisms, progress has been made, but further work is required.</p>
     </div>
   </div>
   <div class="row group">
@@ -60,14 +71,14 @@
 <section class="container">
   <h2 class="heading center">Management of Human Activities</h2>
   <div class="row group">
-    <%= image_tag 'Management_of_Human_Activities.jpg' %>
+    <%= image_tag 'Human_interactions.jpg' %>
   </div>
   <div class="row group">
     <div class="col col-6">
-      <p class="strong">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget risus eleifend, pharetra velit eleifend, volutpat magna. Nulla quis eros sed urna malesuada cursus.</p>
+      <p class="strong">In order to ensure that any use of waterbirds within the Agreement area is sustainable, Parties reported on the existence of related national legislation and measures.</p>
     </div>
     <div class="col col-6">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget risus eleifend, pharetra velit eleifend, volutpat magna. Nulla quis eros sed urna malesuada cursus. Morbi tempor, augue eget euismod venenatis, odio orci suscipit nisl, vel malesuada lectus nibh eu nulla.</p></div>
+      <p>Targets have been set for all Parties to introduce national legislation prohibiting the use of lead shot in hunting, undertake measures to reduce and, as far as possible, eliminate illegal taking of waterbirds and to undertake measures to reduce the incidental catch of seabirds – all of which require further work.</p>
   </div>
   <div class="container">
     <h2>Hunting</h2>
@@ -76,6 +87,9 @@
     <div id='lead_shot_chart' class="loading">
       <%= render partial: "spinner" %>
     </div>
+      <div class="side-panel">
+        <p><%= fa_icon 'info-circle' %> By 2017, AEWA countries should phase out the use of lead ammunition in both wetlands and terrestrial environments (Target 2.1 of the AEWA Strategic Plan 2009-2017).</p>
+      </div>
     <div id='row_chart'></div>
     <div class="panel">
       <p class="strong"><span class="text-red">TARGET: </span>The use of lead shot for hunting in wetlands is phased out in all CPs</p>
@@ -92,6 +106,7 @@
     <div id="seabirds_chart" class="loading">
       <%= render partial: "spinner" %>
     </div>
+    <div class="side-panel"><p><%= fa_icon 'exclamation-triangle' %> Longline and trawl fisheries have significant and widespread impacts on many seabird species, often with lethal effects.<p></div>
   </div>
 </section>
 
@@ -100,14 +115,16 @@
 <section class="container">
   <h2 class="heading center">Education & Information</h2>
   <div class="row group">
-    <%= image_tag 'Education_and_Information.png' %>
+    <%= image_tag 'Birds.jpg' %>
   </div>
   <div class="row group">
     <div class="col col-6">
-      <p class="strong">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget risus eleifend, pharetra velit eleifend, volutpat magna. Nulla quis eros sed urna malesuada cursus.</p>
+      <p class="strong">The improvement of communication, education and public awareness of migratory waterbird species is important for the success of AEWA.</p>
+      <p class="strong">Through the dissemination of information on the 255 species, their flyways, threats faced and the measures needed to conserve them and their habitat.</p>
     </div>
     <div class="col col-6">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget risus eleifend, pharetra velit eleifend, volutpat magna. Nulla quis eros sed urna malesuada cursus. Morbi tempor, augue eget euismod venenatis, odio orci suscipit nisl, vel malesuada lectus nibh eu nulla.</p></div>
+      <p>Parties reported on the development and implementation of awareness-raising programmes relating to waterbird conservation and AEWA, surpassing the target of 25% of Parties having implemented such programmes.</p>
+    </div>
   </div>
   <div class="container">
     <h3 class="subheading">in-country awareness raising programmes</h3>
