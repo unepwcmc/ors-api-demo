@@ -72,8 +72,10 @@ window.ColumnChart = class ColumnChart extends Chart
   addTargetChart: (chart_data) ->
     options = {
       container: 'target_chart'
+
       chart_options: {
         height: 100,
+        backgroundColor: '#999',
         legend: { position: 'none' },
         isStacked: 'percent'
         colors: ['#25437B', '#d6d6d6']
@@ -83,6 +85,9 @@ window.ColumnChart = class ColumnChart extends Chart
           gridlines: {color: '#d6d6d6', count: 1},
           minorGridlines: {color: '#f1f1f1', count: 4},
           #textPosition: 'none',
+          textStyle: {
+            color: 'white'
+          }
         },
         vAxis: {
           textPosition: 'none'

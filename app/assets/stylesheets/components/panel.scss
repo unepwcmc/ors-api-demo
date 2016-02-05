@@ -1,10 +1,14 @@
 @import 'utilities/colors';
 
 .panel {
-  box-shadow: 0 0 5px $light-grey;
+  box-shadow: 0 0 5px $dark-grey;
   padding: 20px;
   margin: 70px 0;
   text-align: center;
+  background: $darker-grey;
+  p {
+    color: $white;
+  }
 }
 
 .side-panel {
@@ -13,5 +17,8 @@
   width: 500px;
   padding: 10px 30px;
   position: relative;
-  margin: 10px auto;
+  margin: 20px auto 10px auto;
+  p {
+    color: $dark-grey;
+  }
 }
