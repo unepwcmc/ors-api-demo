@@ -1,6 +1,7 @@
 @import 'utilities/colors';
 
 .footer {
+  margin-top: 10px;
   padding-top: 50px;
   .ors-logo-bar {
     background: $blue;
@@ -12,13 +13,12 @@
       justify-content: space-between;
     }
     .ors-logo { width: 250px; }
-    .ors-info p { color: white; }
+    .ors-info p { color: $white; }
   }
   .copyright-bar {
     position: relative;
     bottom: 0;
-    background: white;
-    padding: 5px 0;
+    background: $white;
     width: 100%;
     .right {
       text-align: right;

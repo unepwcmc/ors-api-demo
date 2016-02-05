@@ -17,41 +17,9 @@
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <div class="aewa-logo">
-        <%= image_tag 'AEWA_logo.jpg' %>
-      </div>
-      <h1 class="heading">AEWA National Reports 2012-2014</h1>
-    </div>
+    <%= render "layouts/header" %>
     <%= yield %>
   </div>
-  <div class="footer">
-    <div class="row group ors-logo-bar">
-      <div class="container">
-        <div class="col col-6 ors-logo">
-          <%= image_tag "ORS_identity.jpg" %>
-        </div>
-        <div class="col col-6 ors-info">
-          <p>
-            Lorem ipsum dolor sit amet, iusto dicant ocurreret et mel, cu vix dico assum ignota, graeco malorum qui id. Ex vix vide adversarium. Quo ut brute liberavisse. Nisl argumentum ut duo. Nam cu iriure referrentur, ex doming conclusionemque his. No sed doctus feugait assueverit, at option docendi usu, mea iudicabit disputationi ei.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row group copyright-bar">
-      <div class="container">
-        <div class="row group">
-          <div class="col col-8" id="left">
-            <p>Copyright &copy; <%= DateTime.now.year %> UNEP-WCMC. All rights reserved.</p>
-          </div>
-          <div class="col col-4 right">
-            <p>Powered By UNEP-WCMC</p>
-            <%= image_tag 'wcmc_logo.png', class: 'unep-wcmc-logo' %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render "layouts/footer" %>
 </body>
 </html>
