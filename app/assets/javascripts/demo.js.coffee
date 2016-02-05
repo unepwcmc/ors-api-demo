@@ -56,11 +56,13 @@ window.Demo = class Demo
         },
         ticks: [0, 5, 10, 15, 20, 25, 30, 35],
         gridlines: {color: '#d6d6d6', count: 1},
-        minorGridlines: {color: '#f1f1f1', count: 4}
+        minorGridlines: {color: '#f1f1f1', count: 4},
+        title: "Number of AEWA Parties"
       },
       hAxis: {
         gridlines: {color: '#d6d6d6', count: 1},
-        minorGridlines: {color: '#f1f1f1', count: 4}
+        minorGridlines: {color: '#f1f1f1', count: 4},
+        title: "Number of AEWA Parties"
       },
       annotations: {
         alwaysOutside: true,
