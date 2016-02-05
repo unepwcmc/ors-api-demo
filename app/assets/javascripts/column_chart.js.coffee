@@ -71,7 +71,7 @@ window.ColumnChart = class ColumnChart extends Chart
 
   addTargetChart: (chart_data) ->
     options = {
-      container: 'target_chart'
+      container: "#{@container}_target"
 
       chart_options: {
         height: 100,

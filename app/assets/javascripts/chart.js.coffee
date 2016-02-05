@@ -37,7 +37,7 @@ window.Chart = class Chart
       answers: answers
     }
     data['row_answers'] = @addRowData(new_keys, new_hash) if row_data
-    data['target'] = @addTarget(new_keys, new_hash) if @question_id == '/questions/5002'
+    data['target'] = @addTarget(new_keys, new_hash) unless @question_id == '/questions/4472'
     data
 
   countHash: (hash, key) ->
@@ -59,7 +59,7 @@ window.Chart = class Chart
     total = 0
     for key in keys
       if hash[key]
-        if key == 'Fully' or key == 'Partially'
+        if key in ['Fully', 'Partially', 'Yes, being implemented']
           target += hash[key]
         total += hash[key]
 
