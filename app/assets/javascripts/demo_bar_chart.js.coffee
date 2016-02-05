@@ -27,7 +27,8 @@ window.DemoBarChart = class DemoBarChart extends Chart
           hAxis: {
             gridlines: { color: '#d6d6d6' },
             minorGridlines: { color: '#f1f1f1' },
-            textPosition: 'none'
+            textPosition: 'none',
+            maxValue: 200000
           },
           vAxis: { textPosition: 'none' }
         },
@@ -39,7 +40,8 @@ window.DemoBarChart = class DemoBarChart extends Chart
           hAxis: {
             gridlines: { color: '#d6d6d6' },
             minorGridlines: { color: '#f1f1f1' },
-            textPosition: 'none'
+            textPosition: 'none',
+            maxValue: 200000
           },
           vAxis: { textPosition: 'none' }
           legend: { position: 'bottom' },
@@ -52,7 +54,8 @@ window.DemoBarChart = class DemoBarChart extends Chart
           hAxis: {
             gridlines: { color: '#d6d6d6' },
             minorGridlines: { color: '#f1f1f1' },
-            textPosition: 'none'
+            textPosition: 'none',
+            maxValue: 200000
           },
           vAxis: { textPosition: 'none' }
         }

@@ -1,5 +1,9 @@
 @import 'utilities/colors';
 
+body {
+  background-color: $white;
+}
+
 .container {
   width: 80%;
   margin: auto;
@@ -15,6 +19,7 @@ hr {
   border-top: 1px solid $darker-grey;
   border-bottom: none;
   margin: 40px 0;
+  width: 100%;
 }
 
 .center {

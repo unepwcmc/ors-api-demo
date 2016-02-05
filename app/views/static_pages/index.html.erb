@@ -1,5 +1,5 @@
 <section>
-  <div class="row">
+  <div class="row group">
     <div class="col col-6">
       <p class="strong">The Agreement on the Conservation of African-Eurasian Migratory Waterbirds (AEWA) is an intergovernmental treaty dedicated to the conservation of migratory waterbirds and their habitats across Africa, Europe, the Middle East, Central Asia, Greenland and the Canadian Archipelago.
       <p class="strong">AEWA covers 255 species of birds which are ecologically dependent on wetlands for at least part of their annual cycle.</p>
@@ -9,7 +9,13 @@
       <p class="strong">This data has provided by AEWA Contracting Parties in their national reports to the Agreement for the period 2012-2014 and has been pulled dynamically from the Online Reporting System.</p>
     </div>
   </div>
+</section>
+
+<hr>
+
+<section>
   <h2 class="heading center">Reporting Parties</h2>
+
   <div class="row group">
     <div class="col col-6">
       <h3>National report submission map</h3>
@@ -51,8 +57,8 @@
       <p class="strong">The migration of AEWA species across borders requires international cooperation throughout their entire migratory range in order to conserve and manage the populations and the habitat on which they depend.</p>
     </div>
     <div class="col col-6">
-      <p>Parties reported on the designation of protected sites of both national and international importance, indicating whether management plans were being implemented.</p>
-      <p>With a target of at least 50% of Parties establishing national coordination mechanisms, progress has been made, but further work is required.</p>
+      <p class="strong">Parties reported on the designation of protected sites of both national and international importance, indicating whether management plans were being implemented.</p>
+      <p class="strong">With a target of at least 50% of Parties establishing national coordination mechanisms, progress has been made, but further work is required.</p>
     </div>
   </div>
   <div class="row group">
@@ -78,7 +84,7 @@
       <p class="strong">In order to ensure that any use of waterbirds within the Agreement area is sustainable, Parties reported on the existence of related national legislation and measures.</p>
     </div>
     <div class="col col-6">
-      <p>Targets have been set for all Parties to introduce national legislation prohibiting the use of lead shot in hunting, undertake measures to reduce and, as far as possible, eliminate illegal taking of waterbirds and to undertake measures to reduce the incidental catch of seabirds – all of which require further work.</p>
+      <p class="strong">Targets have been set for all Parties to introduce national legislation prohibiting the use of lead shot in hunting, undertake measures to reduce and, as far as possible, eliminate illegal taking of waterbirds and to undertake measures to reduce the incidental catch of seabirds – all of which require further work.</p>
   </div>
   <div class="container">
     <h2>Hunting</h2>
@@ -87,13 +93,14 @@
     <div id='lead_shot_chart' class="loading">
       <%= render partial: "spinner" %>
     </div>
+    <div id='lead_shot_chart_row'></div>
+    <div class="panel">
+      <p class="strong">PROGRESS TOWARDS TARGET </span><p>
+      <p class="strong">The use of lead shot for hunting in wetlands is phased out in all CPs</p>
+      <div id='target_chart'> </div>
       <div class="side-panel">
         <p><%= fa_icon 'info-circle' %> By 2017, AEWA countries should phase out the use of lead ammunition in both wetlands and terrestrial environments (Target 2.1 of the AEWA Strategic Plan 2009-2017).</p>
       </div>
-    <div id='lead_shot_chart_row'></div>
-    <div class="panel">
-      <p class="strong"><span class="text-red">TARGET: </span>The use of lead shot for hunting in wetlands is phased out in all CPs</p>
-      <div id='target_chart'> </div>
     </div>
     <h3 class="subheading">Measure to reduce/eliminate illegal taking</h3>
     <h3>Are there measures in your country to reduce/eliminate illegal taking?</h3>
@@ -106,8 +113,8 @@
     <div id="seabirds_chart" class="loading">
       <%= render partial: "spinner" %>
     </div>
-    <div class="side-panel"><p><%= fa_icon 'exclamation-triangle' %> Longline and trawl fisheries have significant and widespread impacts on many seabird species, often with lethal effects.<p></div>
     <div id="seabirds_chart_row"></div>
+    <div class="side-panel"><p><%= fa_icon 'exclamation-triangle' %> Longline and trawl fisheries have significant and widespread impacts on many seabird species, often with lethal effects.<p></div>
   </div>
 </section>
 
@@ -124,7 +131,7 @@
       <p class="strong">Through the dissemination of information on the 255 species, their flyways, threats faced and the measures needed to conserve them and their habitat.</p>
     </div>
     <div class="col col-6">
-      <p>Parties reported on the development and implementation of awareness-raising programmes relating to waterbird conservation and AEWA, surpassing the target of 25% of Parties having implemented such programmes.</p>
+      <p class="strong">Parties reported on the development and implementation of awareness-raising programmes relating to waterbird conservation and AEWA, surpassing the target of 25% of Parties having implemented such programmes.</p>
     </div>
   </div>
   <div class="container">
