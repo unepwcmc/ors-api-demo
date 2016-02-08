@@ -75,7 +75,7 @@ window.Demo = class Demo
     chart.draw(data, options)
 
   habitatConservationChart: ->
-    questions_ids = [5007, 4997, 4989, 4726, 4581, 4679]
+    questions_ids = [5007, 4997, 4989, 4726, 4581, 4679, 4801, 4459]
     bar_chart = new DemoBarChart(@respondents, questions_ids, ['total_sites', 'nationally_important_sites', 'internationally_important_sites'])
 
   leadShotChart: ->
