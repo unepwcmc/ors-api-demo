@@ -10,6 +10,7 @@ window.ColumnChart = class ColumnChart extends Chart
       legend: {position: 'none'},
       height: 500,
       vAxis: {
+        title: "Number of AEWA Parties",
         viewWindow: {
           min: 0,
           max: 35
@@ -19,7 +20,7 @@ window.ColumnChart = class ColumnChart extends Chart
         minorGridlines: {color: '#f1f1f1', count: 4}
       },
       hAxis: {
-        textPosition: 'none',
+        #textPosition: 'none',
         gridlines: {color: '#d6d6d6', count: 1},
         minorGridlines: {color: '#f1f1f1', count: 4}
       },
@@ -85,6 +86,10 @@ window.ColumnChart = class ColumnChart extends Chart
           gridlines: {color: '#d6d6d6', count: 1},
           minorGridlines: {color: '#f1f1f1', count: 4},
           #textPosition: 'none',
+          title: "% of Contracting Parties",
+          titleTextStyle: {
+            color: '#FFF'
+          },
           textStyle: {
             color: 'white'
           }
