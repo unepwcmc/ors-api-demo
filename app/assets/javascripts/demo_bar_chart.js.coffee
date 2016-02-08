@@ -1,7 +1,19 @@
 window.DemoBarChart = class DemoBarChart extends Chart
-  constructor: (@respondents, @question_id, @containers) ->
+  constructor: (@respondents) ->
     @data = []
-    super(@respondents, @question_id, @containers[0])
+    @questions = {
+      5007: 'international_total',
+      4997: 'international_protected',
+      4989: 'international_with_management',
+      4726: 'national_total',
+      4581: 'national_protected',
+      4679: 'national_with_management',
+      4801: 'international_area',
+      4459: 'national_area'
+    }
+    containers = ['total_sites', 'nationally_important_sites', 'internationally_important_sites']
+
+    super(@respondents, Object.keys(@questions), containers[0])
 
   initChart: (data) ->
     @data.push(@parseData(data))
@@ -69,12 +81,13 @@ window.DemoBarChart = class DemoBarChart extends Chart
       }
       @drawPartial(partial_data, key, options[key])
 
-  displayArea: (data, area) ->
-   national_sites = data.nationally_important_sites
-   international_sites = data.internationally_important_sites
-
-   $('.nationally-important').append(area.nationally_important_area)
-   $('.internationally-important').append(area.internationally_important_area)
+  displayArea: (answers) ->
+    national_sites = "<div class='row group national-sites'>Total sites: #{answers.national_total}</div>"
+    international_sites = "<div class='row group international-sites'>Total sites: #{answers.international_total}</div>"
+    national_area = "<div class='row group national-area'>Total area: #{answers.national_area}</div>"
+    international_area = "<div class='row group international-area'>Total area: #{answers.international_area}</div>"
+    $('.national-info').append(national_sites).append(national_area)
+    $('.international-info').append(international_sites).append(international_area)
 
   drawPartial: (partial_data, container, options) ->
     data = new google.visualization.arrayToDataTable(partial_data)
@@ -82,36 +95,32 @@ window.DemoBarChart = class DemoBarChart extends Chart
     chart.draw(data,options)
 
   gatherData: (chart_data) ->
-    nationally_important = []
-    internationally_important = []
-    nationally_important_area = 0
-    internationally_important_area = 0
-    total = []
+    answers = {}
 
     for data in chart_data
-      if data.question_id in [5007, 4997, 4989]
-        internationally_important.push(@getTotal(data.answers))
-      else if data.question_id in [4726, 4581, 4679]
-        nationally_important.push(@getTotal(data.answers))
-      else if data.question_id ==  4801
-        internationally_important_area = @getTotal(data.answers)
-      else if data.question_id == 4459
-        nationally_important_area = @getTotal(data.answers)
+      question = @questions[data.question_id]
+      answers[question] = @getTotal(data.answers)
 
-    for number, index in nationally_important
-      total.push(number + internationally_important[index])
+    answers['total'] = {
+      total: answers.international_total + answers.national_total,
+      protected: answers.international_protected + answers.national_protected,
+      with_management: answers.international_with_management + answers.national_with_management
+    }
 
+    @displayArea(answers)
+    @answersToArray(answers)
+
+  answersToArray: (answers) ->
+    national = [ answers.national_total, answers.national_protected,
+      answers.national_with_management ]
+    international = [ answers.international_total, answers.international_protected,
+      answers.international_with_management]
+    total = [ answers.total.total, answers.total.protected, answers.total.with_management]
     data = {
-      total_sites: total,
-      nationally_important_sites: nationally_important,
-      internationally_important_sites: internationally_important,
+      nationally_important_sites: national,
+      internationally_important_sites: international,
+      total_sites: total
     }
-    area = {
-      nationally_important_area: nationally_important_area,
-      internationally_important_area: internationally_important_area
-    }
-
-    @displayArea(data, area)
     @addMetaData(data)
 
   addMetaData: (data) ->
