@@ -82,10 +82,12 @@ window.DemoBarChart = class DemoBarChart extends Chart
       @drawPartial(partial_data, key, options[key])
 
   displayArea: (answers) ->
-    $('.national-sites .num-sites').append(answers.national_total)
+    national_sites = answers.national_total.toLocaleString()
+    $('.national-sites .num-sites').append(national_sites)
     national_area = "#{answers.national_area.toLocaleString()} ha"
     $('.national-area .area-sites').append(national_area)
-    $('.international-sites .num-sites').append(answers.international_total)
+    international_sites = answers.international_total.toLocaleString()
+    $('.international-sites .num-sites').append(international_sites)
     international_area = "#{answers.international_area.toLocaleString()} ha"
     $('.international-area .area-sites').append(international_area)
 
