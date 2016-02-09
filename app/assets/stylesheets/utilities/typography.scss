@@ -13,7 +13,11 @@ h1 { font: normal 600 3.688em/1em 'Hind', sans-serif; }
 h2 { font: normal 600 37px/1em 'Hind', sans-serif; }
 h3 { font: normal 600 23px/1.1em 'Hind', sans-serif; }
 h4 { font: normal 300 21px/1.1em 'Hind', sans-serif; }
-p { font: normal 300 14px/1.1em 'Open Sans', sans-serif; }
+p {
+  font: normal 300 14px/1.1em 'Open Sans', sans-serif;
+  -webkit-margin-before: 0.75em;
+  -webkit-margin-after: 0.75em;
+}
 p.strong { font: normal 300 18px/1.1em 'Hind', sans-serif; }
 
 .heading {
