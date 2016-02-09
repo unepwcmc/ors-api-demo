@@ -33,6 +33,9 @@ window.DemoUtils = {
     else
       null
 
+  numberWithCommas: (x) ->
+    x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
   base_url: 'http://cms-ors-api.ort-staging.linode.unep-wcmc.org/api/v1/questionnaires/48'
 
   questions_ids: [],
