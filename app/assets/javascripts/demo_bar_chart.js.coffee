@@ -82,12 +82,12 @@ window.DemoBarChart = class DemoBarChart extends Chart
       @drawPartial(partial_data, key, options[key])
 
   displayArea: (answers) ->
-    national_sites = "<div class='row group national-sites'>Total sites: #{answers.national_total}</div>"
-    international_sites = "<div class='row group international-sites'>Total sites: #{answers.international_total}</div>"
-    national_area = "<div class='row group national-area'>Total area: #{answers.national_area}</div>"
-    international_area = "<div class='row group international-area'>Total area: #{answers.international_area}</div>"
-    $('.national-info').append(national_sites).append(national_area)
-    $('.international-info').append(international_sites).append(international_area)
+    $('.national-sites .num-sites').append(answers.national_total)
+    national_area = "#{answers.national_area.toLocaleString()} ha"
+    $('.national-area .area-sites').append(national_area)
+    $('.international-sites .num-sites').append(answers.international_total)
+    international_area = "#{answers.international_area.toLocaleString()} ha"
+    $('.international-area .area-sites').append(international_area)
 
   drawPartial: (partial_data, container, options) ->
     data = new google.visualization.arrayToDataTable(partial_data)
