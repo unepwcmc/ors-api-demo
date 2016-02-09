@@ -25,7 +25,7 @@
       <h3>National report submission rate</h3>
       <h4>
         AWEA Parties that provided National Reports<br>
-        (as of 2nd July 2015)
+        (as of <%= Date.today.strftime("%d %B %Y") %> )
       </h4>
 
       <div class="stats-block-percentage">
@@ -63,6 +63,46 @@
   </div>
   <div class="row group">
     <h3 class="subheading">Management and protection of nationally and<br> internationally important sites</h3>
+    <div class="row group">
+      <div class="col col-6 national-info">
+        <h4> Nationally important </h4>
+        <div class="row group national-sites">
+          <div class="stats-block-percentage stats-block-percentage--no-borders">
+            Total sites:
+            <div class="stats-block-percentage__text">
+              <div class="num-sites stats-block-percentage__text--blue"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row group national-area">
+          <div class="stats-block-percentage stats-block-percentage--no-borders">
+            Total area:
+            <div class="stats-block-percentage__text">
+              <div class="area-sites stats-block-percentage__text--blue"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col col-6 international-info">
+        <h4> Internationally important </h4>
+        <div class="row group international-sites">
+          <div class="stats-block-percentage stats-block-percentage--no-borders">
+            Total sites:
+            <div class="stats-block-percentage__text">
+              <div class="num-sites stats-block-percentage__text--blue"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row group international-area">
+          <div class="stats-block-percentage stats-block-percentage--no-borders">
+            Total area:
+            <div class="stats-block-percentage__text">
+              <div class="area-sites stats-block-percentage__text--blue"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <h3>Which sites that were identified as important, either internationally or nationally, for Table 1 migratory waterbird species/populations have been designated as protected areas under the national legislation and have management plans that are being implemented?</h3>
   <div id="total_sites" class="loading">
     <%= render partial: "spinner" %>
@@ -96,18 +136,19 @@
     <div id='lead_shot_chart_row'></div>
     <div class="panel">
       <p class="strong">PROGRESS TOWARDS TARGET </span><p>
-      <p class="strong">The use of lead shot for hunting in wetlands is phased out in all CPs</p>
-      <div id='target_chart'> </div>
+      <p class="strong">The use of lead shot for hunting in wetlands is phased out in all AEWA Contracting Parties</p>
+      <div id='lead_shot_chart_target'> </div>
       <div class="side-panel">
         <p><%= fa_icon 'info-circle' %> By 2017, AEWA countries should phase out the use of lead ammunition in both wetlands and terrestrial environments (Target 2.1 of the AEWA Strategic Plan 2009-2017).</p>
       </div>
     </div>
+    <h2>Illegal Take</h2>
     <h3 class="subheading">Measure to reduce/eliminate illegal taking</h3>
     <h3>Are there measures in your country to reduce/eliminate illegal taking?</h3>
     <div id='illegal_taking_chart' class="loading">
       <%= render partial: "spinner" %>
     </div>
-    <h2>Other human activities</h2>
+    <h2>Bycatch</h2>
     <h3 class="subheading">Measures to reduce incidental catch of seabirds</h3>
     <h3>Has your country undertaken steps towards the adoption/application of measures to reduce the incidental catch of seabirds and combat illegal unregulated and unreported (IUU) fishing practices in the agreement area?</h3>
     <div id="seabirds_chart" class="loading">
@@ -141,6 +182,14 @@
       <%= render partial: "spinner" %>
     </div>
     <div id="awareness_chart_row"></div>
+    <div class="panel">
+      <p class="strong">PROGRESS TOWARDS TARGET </span><p>
+      <p class="strong">At least 25% of Contracting Parties have developed and are implementing programmes for raising awareness and understanding on waterbird conservation and AEWA</p>
+      <div id='awareness_chart_target'> </div>
+      <div class="side-panel">
+        <p><%= fa_icon 'info-circle' %> Strategic Plan Target: 4.3. Awareness and understanding of waterbird conservation issues in general and of AEWA in particular are increased at all levels within Contracting Parties</p>
+      </div>
+    </div>
   </div>
 </section>
 

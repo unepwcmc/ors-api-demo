@@ -1,19 +1,38 @@
 window.DemoBarChart = class DemoBarChart extends Chart
-  constructor: (@respondents, @question_id, @containers) ->
+  constructor: (@respondents) ->
     @data = []
-    super(@respondents, @question_id, @containers[0])
+    @questions = {
+      5007: 'international_total',
+      4997: 'international_protected',
+      4989: 'international_with_management',
+      4726: 'national_total',
+      4581: 'national_protected',
+      4679: 'national_with_management',
+      4801: 'international_area',
+      4459: 'national_area'
+    }
+    containers = ['total_sites', 'nationally_important_sites', 'internationally_important_sites']
+
+    super(@respondents, Object.keys(@questions), containers[0])
 
   initChart: (data) ->
     @data.push(@parseData(data))
     if DemoUtils.questions_ids.length > 0
+      DemoUtils.question_id = DemoUtils.questions_ids.shift()
       params = {
-        question_id: "/questions/#{DemoUtils.questions_ids.shift()}",
+        question_id: "/questions/#{DemoUtils.question_id}",
         callback: @initChart
       }
       DemoUtils.ajaxRequest(params)
     else
       $("##{@container}").removeClass("loading")
       @drawChart(@data)
+
+  parseData: (data) ->
+    chart_data = super(data)
+    chart_data['question_id'] = DemoUtils.question_id
+    chart_data
+
 
   drawChart: (chart_data) ->
     gathered_data = @gatherData(chart_data)
@@ -62,6 +81,13 @@ window.DemoBarChart = class DemoBarChart extends Chart
       }
       @drawPartial(partial_data, key, options[key])
 
+  displayArea: (answers) ->
+    $('.national-sites .num-sites').append(answers.national_total)
+    national_area = "#{answers.national_area.toLocaleString()} ha"
+    $('.national-area .area-sites').append(national_area)
+    $('.international-sites .num-sites').append(answers.international_total)
+    international_area = "#{answers.international_area.toLocaleString()} ha"
+    $('.international-area .area-sites').append(international_area)
 
   drawPartial: (partial_data, container, options) ->
     data = new google.visualization.arrayToDataTable(partial_data)
@@ -69,27 +95,33 @@ window.DemoBarChart = class DemoBarChart extends Chart
     chart.draw(data,options)
 
   gatherData: (chart_data) ->
-    nationally_important = []
-    internationally_important = []
-    total = []
+    answers = {}
 
-    for data, index in chart_data
-      if index < 3
-        internationally_important.push(@getTotal(data.answers))
-      else
-        nationally_important.push(@getTotal(data.answers))
+    for data in chart_data
+      question = @questions[data.question_id]
+      answers[question] = @getTotal(data.answers)
 
-    for number, index in nationally_important
-      total.push(number + internationally_important[index])
-
-    data = {
-      total_sites: total,
-      nationally_important_sites: nationally_important,
-      internationally_important_sites: internationally_important,
+    answers['total'] = {
+      total: answers.international_total + answers.national_total,
+      protected: answers.international_protected + answers.national_protected,
+      with_management: answers.international_with_management + answers.national_with_management
     }
 
-    @addMetaData(data)
+    @displayArea(answers)
+    @answersToArray(answers)
 
+  answersToArray: (answers) ->
+    national = [ answers.national_total, answers.national_protected,
+      answers.national_with_management ]
+    international = [ answers.international_total, answers.international_protected,
+      answers.international_with_management]
+    total = [ answers.total.total, answers.total.protected, answers.total.with_management]
+    data = {
+      nationally_important_sites: national,
+      internationally_important_sites: international,
+      total_sites: total
+    }
+    @addMetaData(data)
 
   addMetaData: (data) ->
     keys = Object.keys(data)
@@ -101,6 +133,8 @@ window.DemoBarChart = class DemoBarChart extends Chart
 
   getTotal: (hash) ->
     values = (value for own prop, value of hash)
-    total = values.reduce (t, s) -> parseInt(t, 10) + parseInt(s, 10)
+    total = values.reduce (t, s) ->
+      s = s[0].match(/\d/g).join("")
+      parseInt(t, 10) + parseInt(s, 10)
 
   addData: (answers) ->

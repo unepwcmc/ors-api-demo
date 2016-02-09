@@ -2,9 +2,9 @@ window.DemoUtils = {
   processRequest: (params) ->
     if params.question_id instanceof Array
       DemoUtils.questions_ids = params.question_id
-      question_id = DemoUtils.questions_ids.shift()
+      DemoUtils.question_id = DemoUtils.questions_ids.shift()
       request_params =  {
-        question_id: "/questions/#{question_id}",
+        question_id: "/questions/#{DemoUtils.question_id}",
         callback: params.callback
       }
       DemoUtils.ajaxRequest(request_params)
@@ -36,6 +36,8 @@ window.DemoUtils = {
   base_url: 'http://cms-ors-api.ort-staging.linode.unep-wcmc.org/api/v1/questionnaires/48'
 
   questions_ids: [],
+
+  question_id: 0,
 
   countries: {
       submitted_africa: ['Morocco', 'Kenya', 'South Africa', 'Ghana', 'Tunisia',

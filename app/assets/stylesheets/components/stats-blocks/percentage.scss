@@ -29,3 +29,10 @@ $spacing: 20px;
     }
   }
 }
+
+.stats-block-percentage--no-borders {
+  border: none;
+  margin: 0;
+  padding-top: 0;
+  font: normal 300 14px/1.1em 'Hind', sans-serif;
+}
