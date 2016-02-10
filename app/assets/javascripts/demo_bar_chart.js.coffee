@@ -120,15 +120,15 @@ window.DemoBarChart = class DemoBarChart extends Chart
 
   answersToArray: (answers) ->
     # Answers added to array twice, once for data, once for annotation
-    national = [ answers.national_total, answers.national_total,
-                  answers.national_protected, answers.national_protected,
-                  answers.national_with_management, answers.national_with_management ]
-    international = [ answers.international_total, answers.international_total,
-                      answers.international_protected, answers.international_protected,
-                      answers.international_with_management, answers.international_with_management]
-    total = [ answers.total.total, answers.total.total,
-              answers.total.protected, answers.total.protected,
-              answers.total.with_management, answers.total.with_management]
+    national = [ answers.national_total, DemoUtils.numberWithCommas(answers.national_total),
+                  answers.national_protected, DemoUtils.numberWithCommas(answers.national_protected),
+                  answers.national_with_management, DemoUtils.numberWithCommas(answers.national_with_management) ]
+    international = [ answers.international_total, DemoUtils.numberWithCommas(answers.international_total),
+                      answers.international_protected, DemoUtils.numberWithCommas(answers.international_protected),
+                      answers.international_with_management, DemoUtils.numberWithCommas(answers.international_with_management)]
+    total = [ answers.total.total, DemoUtils.numberWithCommas(answers.total.total),
+              answers.total.protected, DemoUtils.numberWithCommas(answers.total.protected),
+              answers.total.with_management, DemoUtils.numberWithCommas(answers.total.with_management)]
     data = {
       nationally_important_sites: national,
       internationally_important_sites: international,
