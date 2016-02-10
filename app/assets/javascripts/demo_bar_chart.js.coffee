@@ -40,7 +40,7 @@ window.DemoBarChart = class DemoBarChart extends Chart
       options = {
         total_sites: {
           title: "Total for both nationally and internationally important sites",
-          height: 100,
+          height: 200,
           colors: ['#b08c58', '#6d88c4', '#2c53a7'],
           legend: { position: 'bottom' },
           hAxis: {
@@ -49,11 +49,13 @@ window.DemoBarChart = class DemoBarChart extends Chart
             textPosition: 'none',
             maxValue: 200000
           },
-          vAxis: { textPosition: 'none' }
+          vAxis: { textPosition: 'none' },
+          displayAnnotations: true,
+          annotations: {}
         },
         nationally_important_sites: {
           title: "Nationally important sites",
-          height: 100,
+          height: 200,
           colors: ['#b08c58', '#6d88c4', '#2c53a7'],
           legend: { position: 'bottom' },
           hAxis: {
@@ -62,12 +64,14 @@ window.DemoBarChart = class DemoBarChart extends Chart
             textPosition: 'none',
             maxValue: 200000
           },
-          vAxis: { textPosition: 'none' }
+          vAxis: { textPosition: 'none' },
           legend: { position: 'bottom' },
+          displayAnnotations: true,
+          annotations: {}
         },
         internationally_important_sites: {
           title: "Internationally important sites",
-          height: 100,
+          height: 200,
           colors: ['#b08c58', '#6d88c4', '#2c53a7'],
           legend: { position: 'bottom' },
           hAxis: {
@@ -76,7 +80,9 @@ window.DemoBarChart = class DemoBarChart extends Chart
             textPosition: 'none',
             maxValue: 200000
           },
-          vAxis: { textPosition: 'none' }
+          vAxis: { textPosition: 'none' },
+          annotations: {},
+          displayAnnotations: true
         }
       }
       @drawPartial(partial_data, key, options[key])
@@ -113,11 +119,16 @@ window.DemoBarChart = class DemoBarChart extends Chart
     @answersToArray(answers)
 
   answersToArray: (answers) ->
-    national = [ answers.national_total, answers.national_protected,
-      answers.national_with_management ]
-    international = [ answers.international_total, answers.international_protected,
-      answers.international_with_management]
-    total = [ answers.total.total, answers.total.protected, answers.total.with_management]
+    # Answers added to array twice, once for data, once for annotation
+    national = [ answers.national_total, DemoUtils.numberWithCommas(answers.national_total),
+                  answers.national_protected, DemoUtils.numberWithCommas(answers.national_protected),
+                  answers.national_with_management, DemoUtils.numberWithCommas(answers.national_with_management) ]
+    international = [ answers.international_total, DemoUtils.numberWithCommas(answers.international_total),
+                      answers.international_protected, DemoUtils.numberWithCommas(answers.international_protected),
+                      answers.international_with_management, DemoUtils.numberWithCommas(answers.international_with_management)]
+    total = [ answers.total.total, DemoUtils.numberWithCommas(answers.total.total),
+              answers.total.protected, DemoUtils.numberWithCommas(answers.total.protected),
+              answers.total.with_management, DemoUtils.numberWithCommas(answers.total.with_management)]
     data = {
       nationally_important_sites: national,
       internationally_important_sites: international,
@@ -127,7 +138,7 @@ window.DemoBarChart = class DemoBarChart extends Chart
 
   addMetaData: (data) ->
     keys = Object.keys(data)
-    metadata = ['Sites', 'Total', 'Protected', 'Protected with management']
+    metadata = ['Sites', 'Total', {type: 'string', role: 'annotation'}, 'Protected', {type: 'string', role: 'annotation'}, 'Protected with management', {type: 'string', role: 'annotation'}]
     for key in keys
       data[key].unshift('Sites')
       data[key] = [metadata, data[key]]
