@@ -55,15 +55,18 @@ window.Chart = class Chart
     [keys, values]
 
   addTarget: (keys, hash) ->
-    target = 0
-    total = 0
+    progress = 0
+    reminder = 0
     for key in keys
       if hash[key]
         if key in ['Fully', 'Partially', 'Yes, being implemented']
-          target += hash[key]
-        total += hash[key]
+          progress += hash[key]
+        else
+          reminder += hash[key]
 
-    keys = ['', 'Progress', 'Target', {role: 'annotation'}]
-    values = ['Progress', target, total, '']
+    reminder += 32
+    progress_percentage = Math.round((progress / (progress+reminder)) * 100)
+    keys = ['', 'Progress', {role: 'annotation'}, 'Target']
+    values = ['Progress', progress, "#{progress_percentage}%", reminder]
     [keys, values]
 
