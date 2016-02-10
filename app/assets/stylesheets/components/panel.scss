@@ -1,6 +1,7 @@
 @import 'utilities/colors';
 
 .panel {
+  h4 { color: white; }
   box-shadow: 0 0 5px $dark-grey;
   padding: 20px;
   margin: 70px 0;
