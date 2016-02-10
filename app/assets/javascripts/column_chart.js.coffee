@@ -80,6 +80,10 @@ window.ColumnChart = class ColumnChart extends Chart
         legend: { position: 'none' },
         isStacked: 'percent'
         colors: ['#25437B', '#d6d6d6']
+        series: {
+          0: {}
+          1: { enableInteractivity: false, tooltip: 'none' }
+        }
         hAxis: {
           minValue: 0,
           ticks: [0, .2, .4, .6, .8, 1]
