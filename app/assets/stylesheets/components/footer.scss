@@ -12,7 +12,10 @@
       align-items: center;
       justify-content: space-between;
     }
-    .ors-logo { width: 250px; }
+    .ors-logo {
+      width: 250px;
+      img { width: 50%; }
+    }
     .ors-info p { color: $white; }
   }
   .copyright-bar {
