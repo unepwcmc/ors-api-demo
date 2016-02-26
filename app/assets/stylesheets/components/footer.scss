@@ -13,8 +13,11 @@
       justify-content: space-between;
     }
     .ors-logo {
-      width: 250px;
-      img { width: 50%; }
+      margin: 0;
+      img {
+        width: auto;
+        height: 150px;
+      }
     }
     .ors-info p { color: $white; }
   }
