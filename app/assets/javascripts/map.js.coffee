@@ -7,7 +7,7 @@ window.Map = class Map
     south_west = L.latLng(-47.63, -45.52)
     bounds = L.latLngBounds(south_west, north_east)
     window.map = map = new L.Map('map', {
-      zoomControl: false,
+      scrollWheelZoom: false,
       center: [30, 20],
       maxBounds: bounds,
       zoom: 3
