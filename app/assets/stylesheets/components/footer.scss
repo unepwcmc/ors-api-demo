@@ -19,7 +19,8 @@
         height: 150px;
       }
     }
-    .ors-info p { color: $white; }
+    .ors-info p, .ors-info a { color: $white; }
+
   }
   .copyright-bar {
     position: relative;
